@@ -4,7 +4,7 @@
   A directory of national parks with names, phone numbers, and addresses.
   This XML file is an instance of NationalParks.xsd.
   Contains 11 real national parks.
-  Developed by: [PUT YOUR NAME HERE]
+  Developed by: Kenny Nguyen
   Course: CSE445 - Assignment 4
 -->
 <NationalPark xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
