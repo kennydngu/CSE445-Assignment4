@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  NationalParks.xsd
+  XML Schema for the National Parks directory.
+  
+  Structure (from Figure 1):
+    NationalParks (root)
+      └── NationalPark (1 or more)
+            ├── Name (text content)
+            ├── Phone (1 or more, text content)
+            ├── Address
+            │     ├── Number
+            │     ├── Street
+            │     ├── City
+            │     ├── State
+            │     ├── Zip
+            │     └── @NearestAirport (REQUIRED attribute)
+            └── @Rating (OPTIONAL attribute)
+
+  Developed by: [PUT YOUR NAME HERE]
+  Course: CSE445 - Assignment 4
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Root element: NationalParks contains one or more NationalPark -->
+  <xs:element name="NationalParks">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Must have at least one NationalPark, unbounded max -->
+        <xs:element name="NationalPark" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Name: exactly one, string content -->
+              <xs:element name="Name" type="xs:string" />
+
+              <!-- Phone: one or more allowed (multiple phones) -->
+              <xs:element name="Phone" type="xs:string" maxOccurs="unbounded" />
+
+              <!-- Address: exactly one, with sub-elements and required attribute -->
+              <xs:element name="Address">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Number" type="xs:string" />
+                    <xs:element name="Street" type="xs:string" />
+                    <xs:element name="City" type="xs:string" />
+                    <xs:element name="State" type="xs:string" />
+                    <xs:element name="Zip" type="xs:string" />
+                  </xs:sequence>
+                  <!-- NearestAirport is a REQUIRED attribute on Address -->
+                  <xs:attribute name="NearestAirport" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <!-- Rating is an OPTIONAL attribute on NationalPark -->
+            <xs:attribute name="Rating" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
